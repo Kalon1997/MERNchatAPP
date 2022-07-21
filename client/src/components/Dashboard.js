@@ -5,8 +5,9 @@ import './Dashboard.css'
 const Dashboard = ( ) => {
     return (
 <div className='dashboard'>
-        <SidePanel />
+
         <ChatArea />
+        <SidePanel />
 
 </div>
     )

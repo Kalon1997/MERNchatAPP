@@ -12,7 +12,6 @@ router.route('/login').post(login);
 router.route('/logout').get(isAuthedUser, logout);
 router.route('/myProfile').get(isAuthedUser, myProfile);
 
-
 router.route('/createchat').post(isAuthedUser, createNewChat);
 router.route('/allChats').get(isAuthedUser, getAllChats);
 router.route('/saveMsg').patch(isAuthedUser, saveMsg);

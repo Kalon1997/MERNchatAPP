@@ -22,7 +22,7 @@ export const registerAction = (username, email, password) => async (dispatch) =>
             type:"RegisterSuccess",
             payload: data.user
           })
-          window.location.assign('/login')
+          window.location.assign('/')
     } catch (error) {
       dispatch({
         type: "RegisterFailure",

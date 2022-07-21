@@ -6,6 +6,16 @@ const initialState = {
 
 export const chatReducer =createReducer(initialState, {
 
+    STORESOCKETS : (state, action) => {
+        state.socketobj = action.payload
+        state.socketerror = ""
+    },
+
+    STORESOCKETE : (state, action) => {
+        state.socketerror = action.payload
+    },
+
+
     SAVEMSGinSTATE : (state, action) => {
         state.saveMsgError = ""
         state.openedChat.messages = action.payload
@@ -17,8 +27,8 @@ export const chatReducer =createReducer(initialState, {
 
     CreateChatRequest : (state) => {
         state.loading = true;
-        state.rerror = null;
-        state.rerror = "";
+        state.ccerror = null;
+        state.ccerror = "";
     },
     CreateChatSuccess : (state,action) => {
         state.loading=false; 
@@ -26,8 +36,8 @@ export const chatReducer =createReducer(initialState, {
     },
     CreateChatFailure : (state,action) => {
         state.loading=false; 
-        state.rerror = null;
-        state.rerror=action.payload;
+        state.ccerror = null;
+        state.ccerror=action.payload;
     },
     
     AllChatRequest : (state) => {

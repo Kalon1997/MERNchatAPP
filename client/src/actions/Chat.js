@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const createChatAction = (chatName, members) => async (dispatch) => {
+export const createChatAction = (chatName, memberlist) => async (dispatch) => {
     try {
         //request
         dispatch({
@@ -11,7 +11,7 @@ export const createChatAction = (chatName, members) => async (dispatch) => {
         axios.defaults.withCredentials = true
         const { data } = await axios.post(
             "http://localhost:5000/api/v1/createchat",
-            { chatName, members },
+            { chatName, memberlist },
             {
               headers: {
                 "Content-Type": "application/json",
@@ -93,7 +93,7 @@ try {
 } catch (error) {
   dispatch({
     type: "SAVEMSGinSTATEError",
-    payload: error.response.data.message
+    payload: "error in sending"
   })
 }
   
@@ -118,3 +118,19 @@ try {
   })
 }
 }
+
+
+
+export const storeSocketAction = (socket) => (dispatch) => {
+  try {
+    dispatch({
+      type: "STORESOCKETS",
+      payload: socket
+    })
+  } catch (error) {
+    dispatch({
+      type: "STORESOCKETE",
+      payload: "Failed to store socket "
+    })
+  }
+  }

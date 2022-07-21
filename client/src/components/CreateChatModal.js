@@ -1,8 +1,9 @@
 import React, {useRef} from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { createChatAction } from '../actions/Chat'
 
 const CreateChatModal = ( ) => {
+  
 const dispatch = useDispatch()
     const chatnameRef = useRef()
     const chatmembers = useRef()
@@ -25,12 +26,14 @@ const createChatHandler = () => {
  
 <form>
     <input ref={chatnameRef} type="text" class="my-1 form-control" id="chatname" placeholder="chat name?" />
-    <input ref={chatmembers} placeholder='members names separated by coma' type="text" class="my-1 form-control" id="chatmembers" ></input>
+    <label>Enter emails(including yours) with coma separated</label>
+    <input ref={chatmembers} placeholder='members emails' type="text" class="my-1 form-control" id="chatmembers" ></input>
 </form>
 
 
       </div>
       <div class="modal-footer">
+
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={createChatHandler}>Create Chat</button>
       </div>

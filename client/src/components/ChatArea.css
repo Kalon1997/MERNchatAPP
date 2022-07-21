@@ -9,6 +9,13 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+@media only screen and (max-width: 600px) {
+    .chatarea{
+        width: 100%;
+    }
+  }
+
 .buttombar{
     display: flex;
     flex-direction: row;

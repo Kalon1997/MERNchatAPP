@@ -1,5 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react'
-import {saveMessageAction, saveMsginDB} from '../actions/Chat'
+import {saveMessageAction, saveMsginDB, storeSocketAction} from '../actions/Chat'
 import { useDispatch, useSelector } from 'react-redux';
 import socketIO from 'socket.io-client'
 import Reactscroll from "react-scroll-to-bottom"
@@ -15,7 +15,7 @@ const dispatch = useDispatch()
         else
             return state.myweb2.openedChat._id;        
     })
-//
+
 
     const fetchMsgs = useSelector((state) => {
     if(!state.myweb2.openedChat)
@@ -31,7 +31,6 @@ var saveMsgError = useSelector((state) => {
         return state.myweb2.openedChat.saveMsgError;        
 })
 
-// const [messages, setMesages] = useState(fetchMsgs)
 const ENDPOINT = 'http://localhost:5000'  
 const {user} = useSelector((state) => {
     return state.myweb
@@ -39,42 +38,46 @@ const {user} = useSelector((state) => {
 
 var socket = socketIO(ENDPOINT, {  
     cors: {
-    // origin: "ws://echo.websocket.org",
     origin: "ws://localhost:5000/socket.io/?EIO=4&transport=websocket",
     credentials: true
   },transports : ['websocket'] });
 
   const sendHandler = (e) => {
       e.preventDefault();
-      
-      socket.emit("MSGG", {text: msgRef.current.value, sender: user.username});
-     dispatch(saveMsginDB(openedChatID, msgRef.current.value, user.username))
-    // document.getElementById('inputID').innerHTML = "";
+      socket.emit("join_room", openedChatID);
+      socket.emit("MSGG", 
+        {
+            mObj: {text: msgRef.current.value, sender: user.username},
+            room: openedChatID
+        }
+        );     
+      dispatch(saveMsginDB(openedChatID, msgRef.current.value, user.username))
     msgRef.current.value = ""
   }
 
   useEffect(() => {
 
     socket.on("connect", () => {
-        socket.emit("joined", user)
+        socket.emit("join_room", {
+            openedChatID, 
+            user
+        });
+       
     })
-    // socket.emit("joined", "Hey hello, I'm Fox")
-    socket.on("sentmsg", (args) => {
-        console.log(args)
-    })
+
 
     return () => {
         // socket.emit('disconnect');
         socket.off();
     }
-}, [])
+}, [socket])
 
 
 useEffect(() => {
 
  socket.on("RECEIVEDMSG", (args) => {
-    //setMesages([...messages, {text: args.text, sender: args.sender}]);
     var newMArray = [...fetchMsgs, {text: args.text, sender: args.sender}]
+    console.log(args)
     dispatch(saveMessageAction(newMArray))
  })
 
@@ -82,7 +85,7 @@ useEffect(() => {
         // socket.emit('disconnect');
         socket.off();
     }
-}, [socket])
+}, [fetchMsgs, socket])
 
 
     return (

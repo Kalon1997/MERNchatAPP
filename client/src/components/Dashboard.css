@@ -4,3 +4,12 @@
     margin: 2rem;
     border: solid 2px black;
 }
+
+@media only screen and (max-width: 600px) {
+    .dashboard{
+        flex-direction: column;
+        width: 85%;
+        margin: 0;
+        border: none;
+    }
+  }

@@ -30,17 +30,17 @@ var users = []
 
 const io = socketIO(server);
 
-io.on("connection",(socket)=>{
+io.on("connection",async (socket)=>{
 
-    socket.on("joined", (args) => {
-        // socket.emit("sentmsg", args.username + " joined just now ");
-        users[socket.id] = args;
-        console.log(users[socket.id].username + " joined just now ")
-    })
+    await socket.on("join_room", (args) => {   //2
+        socket.join(args.openedChatID)
+        users[socket.id] = args.user;
+    });
  
-socket.on("MSGG", (ms) => {
-    io.emit("RECEIVEDMSG", ms);
-})
+    await socket.on("MSGG", (ms) => {
+        // io.emit("RECEIVEDMSG", ms.mObj); //works no room :(
+        io.to(ms.room).emit("RECEIVEDMSG", ms.mObj);
+    })
 
 });
 

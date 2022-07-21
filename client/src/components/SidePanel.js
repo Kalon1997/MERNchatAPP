@@ -6,8 +6,13 @@ import { getAllChatsAction, selectOpenedChatAction } from '../actions/Chat';
 const SidePanel = ( ) => {
 
     const cList = useSelector((state) => (state.myweb2.chatList))
-    // const allChats = useSelector()
 const dispatch = useDispatch();
+const groupcreateerr = useSelector((state) => {
+    if(!state.myweb2.ccerror)
+      return ""
+    else
+        return state.myweb2.ccerror
+  })
 useEffect((e) => {
     dispatch(getAllChatsAction());
 }, [dispatch])
@@ -19,13 +24,16 @@ useEffect((e) => {
 <nav>
     {
        cList?.map((i, index) => (
-           <button className='w-100 btn btn-warning' onClick={(e) => dispatch(selectOpenedChatAction({
+           <button className='my-1 w-100 btn btn-light' onClick={(e) =>
+            { 
+                 dispatch(selectOpenedChatAction({
             messages: i.messages,
             _id: i._id,
             chatName: i.chatName,
             members: i.members,
             chatCreator: i.chatCreator,
-           }))} key={index}>{i.chatName}</button>
+           }));
+        }} key={index}>{i.chatName}</button>
        )) 
     }
 </nav>
@@ -34,6 +42,7 @@ useEffect((e) => {
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
 Create New Chat
+<b className='text-danger'>{groupcreateerr}</b>
 </button>
 
 <CreateChatModal />
