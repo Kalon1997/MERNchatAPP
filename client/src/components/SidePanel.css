@@ -1,0 +1,11 @@
+.sidepanel{
+    margin: 1rem;
+    border: solid 2px black;
+    width: 20%;
+    height: 80vh;
+    background-color: rgb(222, 236, 235);
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

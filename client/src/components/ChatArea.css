@@ -1,0 +1,54 @@
+.chatarea{
+    margin: 1rem;
+    border: solid 2px black;
+    width: 80%;
+    height: 80vh;
+    background-color: rgb(222, 236, 235);
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.buttombar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+input{
+    width: 100%;
+}
+.chatareaclass{
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+
+}
+.eachChatleft{
+    width: 75%;
+    padding: 2px;
+    height: auto;
+    border: 1px solid black;
+    padding-left: 2rem;
+    border-radius: 2rem;
+    margin: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    float: left;
+}
+
+.eachChatright{
+    width: 75%;
+    height: auto;
+    padding: 2px;
+    padding-left: 2rem;
+    background-color: cadetblue;
+    border-radius: 2rem;
+    border: bold 1px solid;
+    margin: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-end;
+    float: right;
+}

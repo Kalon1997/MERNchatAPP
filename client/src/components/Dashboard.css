@@ -1,0 +1,6 @@
+.dashboard{
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
+    border: solid 2px black;
+}
