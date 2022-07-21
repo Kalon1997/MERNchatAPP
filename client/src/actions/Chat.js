@@ -10,7 +10,7 @@ export const createChatAction = (chatName, memberlist) => async (dispatch) => {
         // {withCredentials: true}
         axios.defaults.withCredentials = true
         const { data } = await axios.post(
-            "http://localhost:5000/api/v1/createchat",
+            "/createchat",
             { chatName, memberlist },
             {
               headers: {
@@ -42,7 +42,7 @@ export const getAllChatsAction = () => async (dispatch) => {
       // {withCredentials: true}
       axios.defaults.withCredentials = true
       const { data } = await axios.get(
-          "http://localhost:5000/api/v1/allChats",
+          "/allChats",
           {
             headers: {
               "Content-Type": "application/json",
@@ -103,7 +103,7 @@ export const saveMsginDB = (id, text, sender) => async (dispatch) => {
 try {
     axios.defaults.withCredentials = true
   await axios.patch(
-      "http://localhost:5000/api/v1/saveMsg",
+      "/saveMsg",
       {chatGroupId: id, text: text, sender: sender},
       {
         headers: {

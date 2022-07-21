@@ -9,7 +9,7 @@ import Navbar from './components/Navbar';
 function App() {
 
   const {isAuth} = useSelector((state) => (state.myweb))
-  const t = true;
+
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(loadUserAction());

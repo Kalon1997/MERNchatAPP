@@ -31,7 +31,7 @@ var saveMsgError = useSelector((state) => {
         return state.myweb2.openedChat.saveMsgError;        
 })
 
-const ENDPOINT = 'http://localhost:5000'  
+const ENDPOINT = 'https://mychatapp22.herokuapp.com/'  
 const {user} = useSelector((state) => {
     return state.myweb
 })

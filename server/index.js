@@ -8,10 +8,15 @@ const app = express();
 
 const server = http.createServer(app);
 const allRoutes = require('./Routes.js')
-require("dotenv").config({ path: __dirname + "/config/config.env" });
+// require("dotenv").config({ path: __dirname + "/config/config.env" });
 const cors = require('cors')
 const connection = require('./db.js')
 connection();
+
+
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config({ path: __dirname +  "server/config/config.env" });
+  }
 
 const corsConfig = {
     credentials: true,
@@ -44,6 +49,12 @@ io.on("connection",async (socket)=>{
 
 });
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../client/build")));
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
+    });
+  }
 
 
 server.listen(process.env.PORT, () => {
