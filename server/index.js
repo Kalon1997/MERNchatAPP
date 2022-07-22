@@ -1,5 +1,6 @@
 const http = require('http')
 const path = require('path');
+const {__dirname} = require('path')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const jsonparser = require('json-parser')
