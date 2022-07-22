@@ -7,7 +7,6 @@ module.exports = async () => {
             useUnifiedTopology:true
         }
         await mongoose.connect(
-            //"mongodb+srv://kalon:kalon123@cluster0.t0gzi.mongodb.net/Mychatapp?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&retryWrites=true&ssl=true",
             process.env.URI,
             connectionParams
         )

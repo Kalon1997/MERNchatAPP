@@ -1,5 +1,5 @@
 import axios from "axios";
-
+// const server_url = "http://localhost:5000/api/v1/"
 export const createChatAction = (chatName, memberlist) => async (dispatch) => {
     try {
         //request
@@ -10,7 +10,7 @@ export const createChatAction = (chatName, memberlist) => async (dispatch) => {
         // {withCredentials: true}
         axios.defaults.withCredentials = true
         const { data } = await axios.post(
-            "/createchat",
+          `/createchat`,
             { chatName, memberlist },
             {
               headers: {
@@ -42,7 +42,7 @@ export const getAllChatsAction = () => async (dispatch) => {
       // {withCredentials: true}
       axios.defaults.withCredentials = true
       const { data } = await axios.get(
-          "/allChats",
+        `/allChats`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -103,7 +103,7 @@ export const saveMsginDB = (id, text, sender) => async (dispatch) => {
 try {
     axios.defaults.withCredentials = true
   await axios.patch(
-      "/saveMsg",
+    `/saveMsg`,
       {chatGroupId: id, text: text, sender: sender},
       {
         headers: {

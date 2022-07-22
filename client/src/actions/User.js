@@ -1,5 +1,7 @@
 import axios from "axios";
 
+// const server_url = "http://localhost:5000/api/v1/"
+
 export const registerAction = (username, email, password) => async (dispatch) => {
     try {
         //request
@@ -10,7 +12,7 @@ export const registerAction = (username, email, password) => async (dispatch) =>
         // {withCredentials: true}
         axios.defaults.withCredentials = true
         const { data } = await axios.post(
-            "/register",
+            `/register`,
             { username, email, password },
             {
               headers: {
@@ -43,7 +45,7 @@ export const loginAction = (email, password) => async (dispatch) => {
       // {withCredentials: true}
       axios.defaults.withCredentials = true
       const { data } = await axios.post(
-          "/login",
+        `/login`,
           { email, password },
           {
             headers: {
@@ -74,7 +76,7 @@ export const loadUserAction = () => async (dispatch) => {
       // {withCredentials: true}
       axios.defaults.withCredentials = true
       const { data } = await axios.get(
-          "/myProfile",
+      `/myProfile`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -103,7 +105,7 @@ export const logoutAction = () => async (dispatch) => {
       // {withCredentials: true}
       axios.defaults.withCredentials = true
       await axios.get(
-          "/logout",
+        `/logout`,
           {
             headers: {
               "Content-Type": "application/json",

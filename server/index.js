@@ -29,7 +29,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 app.use(bodyParser())
 
-app.use('/api/v1',allRoutes);
+app.use('api/v1/',allRoutes);
 
 var users = []
 
@@ -37,7 +37,7 @@ const io = socketIO(server);
 
 io.on("connection",async (socket)=>{
 
-    await socket.on("join_room", (args) => {   //2
+    await socket.on("join_room", (args) => {   
         socket.join(args.openedChatID)
         users[socket.id] = args.user;
     });
@@ -48,6 +48,7 @@ io.on("connection",async (socket)=>{
     })
 
 });
+
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/build")));
