@@ -1,5 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react'
-import {saveMessageAction, saveMsginDB, storeSocketAction} from '../actions/Chat'
+import {saveMessageAction, saveMsginDB} from '../actions/Chat'
 import { useDispatch, useSelector } from 'react-redux';
 import socketIO from 'socket.io-client'
 import Reactscroll from "react-scroll-to-bottom"
@@ -38,7 +38,7 @@ const {user} = useSelector((state) => {
 
 var socket = socketIO(ENDPOINT, {  
     cors: {
-    origin: "ws://localhost:5000/socket.io/?EIO=4&transport=websocket",
+   // origin: "ws://localhost:5000/socket.io/?EIO=4&transport=websocket",
     credentials: true
   },transports : ['websocket'] });
 

@@ -6,14 +6,14 @@ const initialState = {
 
 export const chatReducer =createReducer(initialState, {
 
-    STORESOCKETS : (state, action) => {
-        state.socketobj = action.payload
-        state.socketerror = ""
-    },
+    // STORESOCKETS : (state, action) => {
+    //     state.socketobj = action.payload
+    //     state.socketerror = ""
+    // },
 
-    STORESOCKETE : (state, action) => {
-        state.socketerror = action.payload
-    },
+    // STORESOCKETE : (state, action) => {
+    //     state.socketerror = action.payload
+    // },
 
 
     SAVEMSGinSTATE : (state, action) => {

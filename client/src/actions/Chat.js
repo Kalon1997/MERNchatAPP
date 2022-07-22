@@ -121,16 +121,16 @@ try {
 
 
 
-export const storeSocketAction = (socket) => (dispatch) => {
-  try {
-    dispatch({
-      type: "STORESOCKETS",
-      payload: socket
-    })
-  } catch (error) {
-    dispatch({
-      type: "STORESOCKETE",
-      payload: "Failed to store socket "
-    })
-  }
-  }
+// export const storeSocketAction = (socket) => (dispatch) => {
+//   try {
+//     dispatch({
+//       type: "STORESOCKETS",
+//       payload: socket
+//     })
+//   } catch (error) {
+//     dispatch({
+//       type: "STORESOCKETE",
+//       payload: "Failed to store socket "
+//     })
+//   }
+//   }
