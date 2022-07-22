@@ -5,7 +5,7 @@ const jsonparser = require('json-parser')
 const express = require('express')
 const socketIO = require('socket.io')
 const app = express();
-
+const path = require("path");
 const server = http.createServer(app);
 const allRoutes = require('./Routes.js')
 // require("dotenv").config({ path: __dirname + "/config/config.env" });
