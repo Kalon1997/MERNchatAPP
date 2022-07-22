@@ -1,5 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react'
-import {location} from 'react-router-dom'
+// import {location} from 'react-router-dom'
 import {saveMessageAction, saveMsginDB} from '../actions/Chat'
 import { useDispatch, useSelector } from 'react-redux';
 import socketIO from 'socket.io-client'
@@ -34,8 +34,8 @@ var saveMsgError = useSelector((state) => {
 
 const ENDPOINT = 'https://mychatappwebsocket.herokuapp.com/'  
 
-var HOST = location.origin.replace(/^http/, 'ws')
-var ws = new WebSocket(HOST);
+// var HOST = location.origin.replace(/^http/, 'ws')
+// var ws = new WebSocket(HOST);
 
 const {user} = useSelector((state) => {
     return state.myweb
@@ -44,7 +44,7 @@ const {user} = useSelector((state) => {
 var socket = socketIO(ENDPOINT, {  
     cors: {
 //    origin: "ws://localhost:5000/socket.io/?EIO=4&transport=websocket",
-    origin: ws,    
+    // origin: ws,    
     credentials: true
   },transports : ['websocket'] });
 
